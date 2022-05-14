@@ -5,11 +5,11 @@
         class="loginAccountForm"
         :model="account"
         :rules="account_rules">
-      <el-form-item :label="account.labelName" prop="username" label-width="70px">
-        <el-input type="text" v-model="account.username"/>
+      <el-form-item label="账 号" prop="name" label-width="70px">
+        <el-input type="text" v-model="account.name"/>
       </el-form-item>
-      <el-form-item :label="account.labelPwd" prop="password" label-width="70px">
-        <el-input type="password" v-model="account.password"/>
+      <el-form-item label="密 码" prop="password" label-width="70px">
+        <el-input show-password v-model="account.password"/>
       </el-form-item>
     </el-form>
   </div>
@@ -20,29 +20,38 @@ import {defineComponent, reactive, ref} from "vue";
 // 封装的rules校验规则，直接return返回即可
 import {account_rules} from "@/views/login/config/rules_config";
 import {ElForm} from "element-plus";
+import LocalCache from '@/utils/Cache'
+import {useStore} from "vuex";
 
 export default defineComponent({
   setup() {
     const account = reactive({
-      username: '',
-      password: '',
-      labelName: '账 号',
-      labelPwd: '密 码'
+      name: LocalCache.getCache('name') ?? '',
+      password: LocalCache.getCache('password') ?? '',
     })
 
     // 拿到表单的ref，因为表单是第三方库，类型对象就使用插件的ElForm
     const formRef = ref<InstanceType<typeof ElForm>>()
 
+    const store = useStore()
+
     // 验证登录
-    const loginAction = () => {
+    const loginAction = (isKeepPassword: boolean) => {
       // formRef.value 就是表单组件对象，有一个方法validate对整个表单的内容进行验证，接收一个回调函数，或返回 Promise。
       formRef.value?.validate((val) => {
-        console.log(val)
-        // 判断是否有数据，如果没有数据就为false取反执行
+        // 判断是否有数据，如果没有数据就为false取反执行ss
         if (!val) {
           return '验证失败'
         }
-        console.log('account正在登录...')
+        // 判断是否记住密码
+        if (isKeepPassword) {
+          // 本地缓存
+          LocalCache.setCache('name', account.name)
+          LocalCache.setCache('password', account.password)
+        }
+
+        // 登陆验证
+        store.dispatch('login/accountLoginAction', {...account})
       })
     }
 

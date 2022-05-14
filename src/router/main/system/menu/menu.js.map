@@ -1,0 +1,1 @@
+{"version":3,"file":"menu.js","sourceRoot":"","sources":["menu.ts"],"names":[],"mappings":"AAAA,MAAM,IAAI,GAAG,GAAG,EAAE,CAAC,MAAM,CAAC,mCAAmC,CAAC,CAAA;AAC9D,eAAe;IACb,IAAI,EAAE,mBAAmB;IACzB,IAAI,EAAE,MAAM;IACZ,SAAS,EAAE,IAAI;IACf,QAAQ,EAAE,EAAE;CACb,CAAA"}

@@ -1,6 +1,6 @@
 // rules 验证规则
 export const account_rules = {
-    username: [
+    name: [
         { required: true, message: '账号名称不能为空!', trigger: 'blur' },
         { pattern: /^[a-z0-9]{5,10}$/, message: '用户名为必须是5-10个字符或者数字', trigger: 'blur' },
     ],

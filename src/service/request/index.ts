@@ -42,7 +42,7 @@ class HYRequest {
         // 全局，在添加一个所有的实例都有的拦截器
         this.instance.interceptors.request.use(
             (config) => {
-                console.log('所有实例都有的拦截器：请求拦截成功')
+                // console.log('所有实例都有的拦截器：请求拦截成功')
                 // 在请求的时候显示加载,通过扩展判断是否为true开启，反之就不进行加载
                 this.showLoading
                     ? this.loading = ElLoading.service({
@@ -56,19 +56,19 @@ class HYRequest {
             },
 
             (error) => {
-                console.log('所有实例都有的拦截器：请求拦截失败')
+                //  console.log('所有实例都有的拦截器：请求拦截失败')
                 return error
             }
         )
         this.instance.interceptors.response.use(
             (res) => {
-                console.log('所有实例都有的拦截器：响应拦截成功')
+                //   console.log('所有实例都有的拦截器：响应拦截成功')
                 // 响应的成功就关闭loading
                 this.showLoading ? this.loading?.close() : false
-                return res
+                return res.data
             },
             (error) => {
-                console.log('所有实例都有的拦截器：响应拦截失败')
+                //  console.log('所有实例都有的拦截器：响应拦截失败')
                 this.showLoading ? this.loading?.close() : false
                 return error
             }
@@ -77,7 +77,7 @@ class HYRequest {
 
     // 请求方法：也可以配置单独拦截，就是属于请求的拦截
     // 采用泛型，根据调用者想获取什么样的泛型数据 ， 返回什么样的泛型数据
-    request<T>(config: HYRequestConfig<T>): Promise<T> {
+    request<T = any>(config: HYRequestConfig<T>): Promise<T> {
         return new Promise((resolve, reject) => {
                 // 单个请求对数据config的处理， 如有interceptors拦截器不为空就进行请求拦截
                 if (config.interceptors?.requestInterceptors) {
@@ -103,20 +103,20 @@ class HYRequest {
         )
     }
 
-    get<T>(config: HYRequestConfig<T>): Promise<T> {
+    get<T = any>(config: HYRequestConfig<T>): Promise<T> {
         // 可变长config.method 也是AxiosRequestConfig中有用的
         return this.request<T>({...config, method: 'GET'})
     }
 
-    post<T>(config: HYRequestConfig<T>): Promise<T> {
+    post<T = any>(config: HYRequestConfig<T>): Promise<T> {
         return this.request<T>({...config, method: 'POST'})
     }
 
-    delete<T>(config: HYRequestConfig<T>): Promise<T> {
+    delete<T = any>(config: HYRequestConfig<T>): Promise<T> {
         return this.request<T>({...config, method: 'DELETE'})
     }
 
-    patch<T>(config: HYRequestConfig<T>): Promise<T> {
+    patch<T = any>(config: HYRequestConfig<T>): Promise<T> {
         return this.request<T>({...config, method: 'PATCH'})
     }
 

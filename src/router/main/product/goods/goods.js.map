@@ -1,0 +1,1 @@
+{"version":3,"file":"goods.js","sourceRoot":"","sources":["goods.ts"],"names":[],"mappings":"AAAA,MAAM,KAAK,GAAG,GAAG,EAAE,CAAC,MAAM,CAAC,sCAAsC,CAAC,CAAA;AAClE,eAAe;IACb,IAAI,EAAE,qBAAqB;IAC3B,IAAI,EAAE,OAAO;IACb,SAAS,EAAE,KAAK;IAChB,QAAQ,EAAE,EAAE;CACb,CAAA"}

@@ -26,7 +26,7 @@ class HYRequest {
         this.instance.interceptors.response.use(this.interceptor?.responseInterceptors, this.interceptor?.responseInterceptorsCatch);
         // 全局，在添加一个所有的实例都有的拦截器
         this.instance.interceptors.request.use((config) => {
-            console.log('所有实例都有的拦截器：请求拦截成功');
+            // console.log('所有实例都有的拦截器：请求拦截成功')
             // 在请求的时候显示加载,通过扩展判断是否为true开启，反之就不进行加载
             this.showLoading
                 ? this.loading = ElLoading.service({
@@ -37,16 +37,16 @@ class HYRequest {
                 : false;
             return config;
         }, (error) => {
-            console.log('所有实例都有的拦截器：请求拦截失败');
+            //  console.log('所有实例都有的拦截器：请求拦截失败')
             return error;
         });
         this.instance.interceptors.response.use((res) => {
-            console.log('所有实例都有的拦截器：响应拦截成功');
+            //   console.log('所有实例都有的拦截器：响应拦截成功')
             // 响应的成功就关闭loading
             this.showLoading ? this.loading?.close() : false;
-            return res;
+            return res.data;
         }, (error) => {
-            console.log('所有实例都有的拦截器：响应拦截失败');
+            //  console.log('所有实例都有的拦截器：响应拦截失败')
             this.showLoading ? this.loading?.close() : false;
             return error;
         });

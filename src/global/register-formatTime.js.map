@@ -1,0 +1,1 @@
+{"version":3,"file":"register-formatTime.js","sourceRoot":"","sources":["register-formatTime.ts"],"names":[],"mappings":"AAEA,OAAO,EAAC,eAAe,EAAC,MAAM,qBAAqB,CAAC;AAEpD,MAAM,CAAC,OAAO,UAAU,kBAAkB,CAAC,GAAQ;IAC/C,GAAG,CAAC,MAAM,CAAC,gBAAgB,CAAC,QAAQ,GAAG;QACnC,UAAU,CAAC,KAAa;YACpB,OAAO,eAAe,CAAC,KAAK,CAAC,CAAA;QACjC,CAAC;KACJ,CAAA;AACL,CAAC"}

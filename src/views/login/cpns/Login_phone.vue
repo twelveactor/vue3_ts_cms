@@ -6,12 +6,12 @@
         :model="phone"
         :rules="phone_rules">
       <el-form-item label="手机号" prop="number" label-width="70px">
-        <el-input type="text" v-model="phone.number"/>
+        <el-input type="text" v-model="phone.number" disabled/>
       </el-form-item>
       <el-form-item label="验证码" prop="code" label-width="70px">
         <div class="getCode">
-          <el-input type="password" v-model="phone.code"/>
-          <el-button type="primary" class="codeBtn">获取验证码</el-button>
+          <el-input type="password" v-model="phone.code" disabled/>
+          <el-button type="primary" class="codeBtn" disabled>获取验证码</el-button>
         </div>
       </el-form-item>
     </el-form>
