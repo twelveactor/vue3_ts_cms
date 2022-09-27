@@ -1,19 +1,12 @@
-# vue3
+# vue3 + TS 项目开发
 
-## Project setup
 ```
 npm install
-```
-
-### Compiles and hot-reloads for development
-```
 npm run serve
-```
-
-### Compiles and minifies for production
-```
 npm run build
+See [Configuration Reference](https://cli.vuejs.org/config/).
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## 项目开发页面
+![image](https://user-images.githubusercontent.com/51089202/192497062-7d5bc136-e0c7-41d8-ac0c-9ffb47b07805.png)
+
